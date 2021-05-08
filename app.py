@@ -2,20 +2,15 @@ import streamlit as st
 import requests
 import json
 
-# zip_code = '07646'
 country_code = "us"
 API_key = "98ec6864b86b42efec56dc8a1b9abcef"
-# response = requests.get(f'http://api.openweathermap.org/data/2.5/weather?zip={zip_code},{country_code}&appid={API_key}&units=imperial')
 
 
 if __name__ == "__main__":
-    
+    st.title("Sweater Weather Commitee")
     zip_code = st.text_input("What is your zipcode?", "")
     response = requests.get(f'http://api.openweathermap.org/data/2.5/weather?zip={zip_code},{country_code}&appid={API_key}&units=imperial')
 
-    # while response.status_code != 200:
-    #zip_code = st.text_input("What is your zipcode?")
-    #     response = requests.get(f'http://api.openweathermap.org/data/2.5/weather?zip={zip_code},{country_code}&appid={API_key}&units=imperial')
     if response.status_code != 200:
         st.stop()
     data = response.json()
